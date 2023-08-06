@@ -1,0 +1,54 @@
+<div class="usermain">
+  <header>
+    <div>Image List</div>
+    <div class="allbtn">
+      <button>View</button>
+    </div>
+  </header>
+  <!-- batchForm -->
+  <form [formGroup]="batchform" (ngSubmit)="onSubmit()">
+    <div>
+      <section>
+        <select formControlName="batch_type">
+          <option value="">Select</option>
+          <option [value]="batch?.batch_type" *ngFor="let batch of batchlist">{{batch.batch_type}}</option>
+        </select>
+      </section>
+      <div>
+        <input
+          type="text"
+          id="batch"
+          formControlName="username"
+          required
+        />
+      </div>
+      </div>
+  </form>
+
+  <table class="rounded-table">
+    <thead>
+      <tr>
+        <td>S.No</td>
+        <td>Name</td>
+        <td>Batch Name</td>
+        <td>Photo 1</td>
+        <td>Photo 2</td>
+        <td>Photo 3</td>
+        <td>Photo 4</td>
+        <td>Photo 5</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of studentInfo"><td>{{student?.uid}}</td>
+      <td>{{student?.name | titlecase}}</td>
+      <td>{{student?.adhaar}}</td>
+      <td><app-imagedisplay [imageData]="parse(student?.photo1)?.photo1"></app-imagedisplay></td>
+      <td><app-imagedisplay [imageData]="parse(student?.photo2)?.photo2"></app-imagedisplay></td>
+      <td><app-imagedisplay [imageData]="parse(student?.photo3)?.photo3"></app-imagedisplay></td>
+      <td><app-imagedisplay [imageData]="parse(student?.photo4)?.photo4"></app-imagedisplay></td>
+      <td><app-imagedisplay [imageData]="parse(student?.photo5)?.photo5"></app-imagedisplay></td>
+
+      <td></td></tr>
+    </tbody>
+  </table>
+</div>
