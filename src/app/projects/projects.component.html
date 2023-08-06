@@ -42,11 +42,11 @@
       <tr *ngFor="let student of studentInfo"><td>{{student?.uid}}</td>
       <td>{{student?.name | titlecase}}</td>
       <td>{{student?.adhaar}}</td>
-      <td><app-imagedisplay [imageData]="parse(student?.photo1)?.photo1"></app-imagedisplay></td>
-      <td><app-imagedisplay [imageData]="parse(student?.photo2)?.photo2"></app-imagedisplay></td>
-      <td><app-imagedisplay [imageData]="parse(student?.photo3)?.photo3"></app-imagedisplay></td>
-      <td><app-imagedisplay [imageData]="parse(student?.photo4)?.photo4"></app-imagedisplay></td>
-      <td><app-imagedisplay [imageData]="parse(student?.photo5)?.photo5"></app-imagedisplay></td>
+      <td><app-imagedisplay [imageData]="student?.photo1?.photo1"></app-imagedisplay></td>
+      <td><app-imagedisplay [imageData]="student?.photo2?.photo2"></app-imagedisplay></td>
+      <td><app-imagedisplay [imageData]="student?.photo3?.photo3"></app-imagedisplay></td>
+      <td><app-imagedisplay [imageData]="student?.photo4?.photo4"></app-imagedisplay></td>
+      <td><app-imagedisplay [imageData]="student?.photo5?.photo5"></app-imagedisplay></td>
 
       <td></td></tr>
     </tbody>
