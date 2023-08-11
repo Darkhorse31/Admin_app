@@ -1,57 +1,76 @@
-<div class="usermain">
-    <header>
-      <div>Batch List</div>
-      <div class="allbtn">
-        <button (click)="showForm = true">Add batch</button>
-        <button (click)="showForm = false">batch List</button>
-      </div>
-    </header>
-    <!-- batchForm -->
-    <form [formGroup]="batchform" *ngIf="showForm" (ngSubmit)="onSubmit()">
-      <div>
-        <section>
-          <label for="user">User Name</label>
-          <select formControlName="username">
-            <option value="">Select</option>
-            <option [value]="user?.email" *ngFor="let user of listuser">{{user.email}}</option>
-          </select>
-        </section>
-        <section>
-          <label for="batch">Batch Name</label>
-          <input
-            type="text"
-            id="batch"
-            formControlName="batch_type"
-            required
-          />
-        </section>
+  <div class="page-header">
+    <h3 class="page-title">Batch List</h3>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <button class="btn btn-outline-success mr-3" type="button" (click)="showForm = true">Add Batch</button>
+          <button class="btn btn-outline-success" type="button" (click)="showForm = false">Batch List</button>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-12" *ngIf="showForm">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="batchform" *ngIf="showForm" (ngSubmit)="onSubmit()" class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="user">User Name</label>
+                <select formControlName="username" class="form-control">
+                  <option value="">Select</option>
+                  <option [value]="user?.email" *ngFor="let user of listuser">{{user.email}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="batch">Batch Name</label>
+                <input
+                  type="text"
+                  id="batch"
+                  formControlName="batch_type"
+                  required
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-12 text-right">
+              <button type="submit" class="btn btn-success btn-fw mr-3">Submit</button>
+              <button (click)="showForm=false" type="cancel" class="btn btn-dark btn-fw">Cancel</button>
+            </div>
+          </form>
         </div>
-      <div>
-        <button type="submit">Submit</button>
-        <input (click)="showForm=false" type="cancel" value="Cancel"/>
       </div>
-    </form>
-  
-    <table class="rounded-table">
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>Batch Name</td>
-          <td>Admin Name</td>
-          <td>User Name</td>
-          <td>Student</td>
-          <td>Status</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let batch of batchlist"><td>{{batch?.id}}</td>
-        <td>{{batch?.batch_type | titlecase}}</td>
-        <td>{{batch?.adminName?batch?.adminName:'Naveen'}}</td>
-        <td>{{batch?.batchname }}</td>
-        <td>{{batch?.student}}</td>
-        <td>{{batch?.status?batch?.status:'Active'}}</td>
-        <td></td></tr>
-      </tbody>
-    </table>
+    </div>
+    <div class="col-12" *ngIf="!showForm">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <td>ID</td>
+                  <td>Batch Name</td>
+                  <td>Admin Name</td>
+                  <td>User Name</td>
+                  <td>Student</td>
+                  <td>Status</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let batch of batchlist"><td>{{batch?.id}}</td>
+                  <td>{{batch?.batch_type | titlecase}}</td>
+                  <td>{{batch?.adminName?batch?.adminName:'Naveen'}}</td>
+                  <td>{{batch?.batchname }}</td>
+                  <td>{{batch?.student}}</td>
+                  <td>{{batch?.status?batch?.status:'Active'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   

@@ -1,106 +1,141 @@
-<div class="usermain">
-  <header>
-    <div>User List</div>
-    <div class="allbtn">
-      <button (click)="showForm = true">Add User</button>
-      <button (click)="showForm = false">User List</button>
+<div class="page-header">
+  <h3 class="page-title">User List</h3>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <button class="btn btn-outline-success mr-3" type="button" (click)="showForm = true">Add User</button>
+        <button class="btn btn-outline-success" type="button" (click)="showForm = false">User List</button>
+      </li>
+    </ol>
+  </nav>
+</div>
+<div class="row">
+  <div class="col-12" *ngIf="showForm">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="userForm" *ngIf="showForm" (ngSubmit)="onSubmit()">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">First Name</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                id="first_name"
+                formControlName="first_name"
+                required
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Last Name</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                id="last_name"
+                formControlName="last_name"
+                required
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+              <input type="email" id="email" formControlName="email" class="form-control" required />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Mobile</label>
+            <div class="col-sm-9">
+              <input type="tel" id="mobile" formControlName="mobile" class="form-control" required />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Max Number of Batches</label>
+            <div class="col-sm-9">
+              <input
+                type="number"
+                id="number_of_batches"
+                formControlName="number_of_batches"
+                required
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                required
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-9">
+              <div class="form-check form-check-success">
+                <label class="form-check-label">
+                  <input type="checkbox" id="edit_option" formControlName="edit_option" class="form-check-input" />
+                  Edit Option<i class="input-helper"></i>
+                </label>
+              </div>
+              <div class="form-check form-check-success">
+                <label class="form-check-label">
+                  <input type="checkbox" id="delete_option" formControlName="delete_option" class="form-check-input" />
+                  Delete Option<i class="input-helper"></i>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 text-right">
+              <button type="submit" class="btn btn-success btn-fw mr-3">Submit</button>
+              <button (click)="showForm=false" type="cancel" class="btn btn-dark btn-fw">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-  </header>
-  <!-- userForm -->
-  <form [formGroup]="userForm" *ngIf="showForm" (ngSubmit)="onSubmit()">
-    <div>
-      <section>
-        <label for="first_name">First Name</label>
-        <input
-          type="text"
-          id="first_name"
-          formControlName="first_name"
-          required
-        />
-      </section>
-      <section>
-        <label for="last_name">Last Name</label>
-        <input
-          type="text"
-          id="last_name"
-          formControlName="last_name"
-          required
-        />
-      </section>
-      <section>
-        <label for="email">Email</label>
-        <input type="email" id="email" formControlName="email" required /><br />
-      </section>
-      <section>
-        <label for="mobile">Mobile</label>
-        <input type="tel" id="mobile" formControlName="mobile" required /><br />
-      </section>
+  </div>
+  <div class="col-12" *ngIf="!showForm">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>User Name</td>
+                <td>Admin Name</td>
+                <td>Email</td>
+                <td>Mobile</td>
+                <td>Status</td>
+                <td>Batch No</td>
+                <td>Used batch</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of listuser"><td>{{user?.id}}</td>
+                <td>{{user?.first_name+user?.last_name | titlecase}}</td>
+                <td>{{user?.email |titlecase}}</td>
+                <td>{{user?.adminName}}</td>
+                <td>{{user?.email |titlecase}}</td>
+                <td>{{user?.mobile}}</td>
+                <td>{{user?.status?user?.status:'Activate'}}</td>
+                <td>{{user?.number_of_batches}}</td>
+                <td>{{user?.usedBatch}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-    <div>
-      <section>
-        <label for="number_of_batches">Number of Batches</label>
-
-        <input
-          type="number"
-          id="number_of_batches"
-          formControlName="number_of_batches"
-          required
-        />
-      </section>
-      <section>
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          formControlName="password"
-          required
-        />
-      </section>
-      <section>
-        <label for="edit_option">Edit Option</label>
-        <input type="checkbox" id="edit_option" formControlName="edit_option" />
-      </section>
-      <section>
-        <label for="delete_option">Delete Option</label>
-        <input
-          type="checkbox"
-          id="delete_option"
-          formControlName="delete_option"
-        />
-      </section>
-    </div>
-    <div>
-      <button type="submit">Submit</button>
-      <input (click)="showForm=false" type="cancel" value="Cancel"/>
-    </div>
-  </form>
-
-  <table class="rounded-table">
-    <thead>
-      <tr>
-        <td>ID</td>
-        <td>Name</td>
-        <td>User Name</td>
-        <td>Admin Name</td>
-        <td>Email</td>
-        <td>Mobile</td>
-        <td>Status</td>
-        <td>Batch No</td>
-        <td>Used batch</td>
-        <td>Action</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of listuser"><td>{{user?.id}}</td>
-      <td>{{user?.first_name+user?.last_name | titlecase}}</td>
-      <td>{{user?.email |titlecase}}</td>
-      <td>{{user?.adminName}}</td>
-      <td>{{user?.email |titlecase}}</td>
-      <td>{{user?.mobile}}</td>
-      <td>{{user?.status?user?.status:'Activate'}}</td>
-      <td>{{user?.number_of_batches}}</td>
-      <td>{{user?.usedBatch}}</td>
-      <td></td></tr>
-    </tbody>
-  </table>
+  </div>
 </div>
