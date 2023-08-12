@@ -11,6 +11,8 @@ import { PhaseComponent } from './phase/phase.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { ImagedisplayComponent } from './imagedisplay/imagedisplay.component';
+import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,8 @@ import { ImagedisplayComponent } from './imagedisplay/imagedisplay.component';
     PhaseComponent,
     UserComponent,
     ImagedisplayComponent,
+    LoginComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
