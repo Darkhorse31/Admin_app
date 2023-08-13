@@ -5,6 +5,7 @@ import { PhaseComponent } from './phase/phase.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { AuthGuard } from './auth.guard';
 const routes: Routes = [
    {
     path:'login',
@@ -12,6 +13,7 @@ const routes: Routes = [
    },
    {
     path:'',
+    canActivate:[AuthGuard],
     component:MainComponent,
     children:[
       {

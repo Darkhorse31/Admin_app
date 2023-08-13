@@ -1,0 +1,32 @@
+.loginMain{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    .mainlogin{
+        width: 300px;
+       aspect-ratio: 1; 
+       background-color: rgb(8, 0, 15);
+       padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .heading{
+            align-self: center;
+            font-size: 40px;
+        }
+        form{
+            div{
+                display: flex;
+                flex-direction: column;
+            }
+            button{
+                margin-top: 20px;
+                width: 100px;
+                background-color: rgb(150, 64, 255);
+                border: none;
+                color: aliceblue;
+            }
+        }
+    }
+}

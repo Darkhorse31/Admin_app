@@ -13,6 +13,9 @@ import { UserComponent } from './user/user.component';
 import { ImagedisplayComponent } from './imagedisplay/imagedisplay.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './token-interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,11 @@ import { MainComponent } from './main/main.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
