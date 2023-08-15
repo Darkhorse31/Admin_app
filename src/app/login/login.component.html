@@ -1,0 +1,19 @@
+<div class="loginMain">
+  <div class="mainlogin">  
+  <div class="heading">Login</div>
+  <div>
+    <form [formGroup]="loginForm">
+      <div><label for="username">Email</label>
+       <input type="email" formControlName="username" name="username" id="username">
+    </div>
+    <p *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.hasError('required')">Email is Required</p>
+    <div><label for="password" >Password</label>
+        <input type="password" formControlName="password" name="password" id="password">
+     </div>
+    <p *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">Password is Required</p>
+
+     <button (click)="login()" type="submit">Login</button>
+    </form>
+  </div>
+</div>
+</div>
