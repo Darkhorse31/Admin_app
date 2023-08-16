@@ -9040,7 +9040,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #ffffff;
+  color: #000000;
   text-align: left;
   background-color: #fff; }
 
@@ -10119,7 +10119,7 @@ pre {
   .jsgrid .jsgrid-table td {
     padding: 0.9375rem;
     vertical-align: top;
-    border-top: 1px solid #2c2e33; }
+    border-top: 1px solid #cbcbcb; }
   .table thead th, .jsgrid .jsgrid-table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #2c2e33; }
@@ -12944,7 +12944,7 @@ input[type="button"].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #191c24;
+  background-color: #fbfbfb;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem; }
@@ -17284,13 +17284,14 @@ code {
   border-radius: 4px; }
 
 .page-header {
-  margin: 0 0 1.5rem 0; }
+  margin: 0 0 1.5rem 0;
+border-bottom:1px solid #00d25b; }
   .page-header .breadcrumb {
     border: 0;
     margin-bottom: 0; }
 
 .page-title {
-  color: #ffffff;
+  color: #00d25b;
   font-size: 1.125rem;
   margin-bottom: 0; }
   .page-title .page-title-icon {
@@ -18122,7 +18123,7 @@ code {
     .card .card-body + .card-body {
       padding-top: 1rem; }
   .card .card-title {
-    color: #ffffff;
+    color: #00d25b;
     margin-bottom: 1.125rem;
     text-transform: capitalize; }
   .card .card-subtitle {
@@ -18468,20 +18469,20 @@ code {
 .jsgrid .jsgrid-table .jsgrid-filter-row select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .typeahead,
 .tt-query,
 .tt-hint {
-  border: 1px solid #2c2e33;
+  border: 1px solid #cdcdcd;
   height: calc(2.25rem + 2px);
   font-weight: normal;
   font-size: 0.875rem;
   padding: 0.625rem 0.6875rem;
-  background-color: #2A3038;
+  background-color: #ffffff;
   border-radius: 2px;
-  color: #ffffff; }
+  color: #191c24; }
   .form-control:focus, .asColorPicker-input:focus, .dataTables_wrapper select:focus, .jsgrid .jsgrid-table .jsgrid-filter-row input:focus[type=text],
   .jsgrid .jsgrid-table .jsgrid-filter-row select:focus, .jsgrid .jsgrid-table .jsgrid-filter-row input:focus[type=number], .select2-container--default .select2-selection--single:focus, .select2-container--default .select2-selection--single .select2-search__field:focus, .typeahead:focus,
   .tt-query:focus,
   .tt-hint:focus {
-    border: 1px solid rgba(71, 164, 71, 0.5);
-    background-color: #2A3038; }
+    border:  1px solid #cdcdcd;
+    background-color: #ffffff; }
   .form-control.form-control-lg, .form-control-lg.asColorPicker-input, .dataTables_wrapper select.form-control-lg, .jsgrid .jsgrid-table .jsgrid-filter-row input.form-control-lg[type=text],
   .jsgrid .jsgrid-table .jsgrid-filter-row select.form-control-lg, .jsgrid .jsgrid-table .jsgrid-filter-row input.form-control-lg[type=number], .select2-container--default .form-control-lg.select2-selection--single, .select2-container--default .select2-selection--single .form-control-lg.select2-search__field, .form-control-lg.typeahead,
   .form-control-lg.tt-query,
@@ -18518,13 +18519,13 @@ select.form-control, select.asColorPicker-input, .dataTables_wrapper select,
 select.tt-query,
 select.tt-hint {
   padding: .4375rem .75rem;
-  border: 0;
+  border: 1px solid #cdcdcd;
   color: #4b5564; }
   select.form-control:focus, select.asColorPicker-input:focus, .dataTables_wrapper select:focus,
   .jsgrid .jsgrid-table .jsgrid-filter-row select:focus, .select2-container--default select.select2-selection--single:focus, .select2-container--default .select2-selection--single select.select2-search__field:focus, select.typeahead:focus,
   select.tt-query:focus,
   select.tt-hint:focus {
-    outline: 1px solid #2c2e33; }
+    outline: none; }
   select.form-control.border-primary, select.border-primary.asColorPicker-input, .dataTables_wrapper select.border-primary,
   .jsgrid .jsgrid-table .jsgrid-filter-row select.border-primary, .select2-container--default select.border-primary.select2-selection--single, .select2-container--default .select2-selection--single select.border-primary.select2-search__field, select.border-primary.typeahead,
   select.border-primary.tt-query,
@@ -19427,7 +19428,10 @@ div.tagsinput {
 /* Tables */
 .table, .jsgrid .jsgrid-table {
   margin-bottom: 0;
-  color: #6c7293; }
+  color: #191c24; }
+  .table thead{
+    font-weight:bold;
+  }
   .table thead th, .jsgrid .jsgrid-table thead th {
     border-top: 0;
     border-bottom-width: 1px;
@@ -21185,7 +21189,7 @@ body.avgrund-active {
     font-size: 25px;
     line-height: 1;
     font-weight: 500;
-    color: #ffffff;
+    color: #00d25b;
     font-weight: initial;
     margin-bottom: 0; }
   .swal2-modal .swal2-icon,
@@ -21739,22 +21743,25 @@ div.tagsinput {
 /*-------------------------------------------------------------------*/
 /* === Landing screens === */
 /* Auth */
-// .auth.login-bg {
-//   background: url("./assets/images/auth/Login_bg.jpg");
-//   background-size: cover; }
+.auth.login-bg {
+  background: url("./assets/img/Login_bg.jpg");
+  background-size: cover;
+  background-position: center; }
+.auth.login-bg .card{
+  background: rgb(251 251 251 / 96%);}
+/*
+.auth .login-half-bg {
+  background: url("./assets/images/auth/login-bg.jpg");
+  background-size: cover; }
 
-// .auth .login-half-bg {
-//   background: url("./assets/images/auth/login-bg.jpg");
-//   background-size: cover; }
+.auth.register-half-bg {
+  background: url("./assets/images/auth/Login_bg2.jpg");
+  background-size: cover; }
 
-// .auth.register-half-bg {
-//   background: url("./assets/images/auth/Login_bg2.jpg");
-//   background-size: cover; }
-
-// .auth.lock-full-bg {
-//   background: url("./assets/images/auth/lockscreen-bg.jpg");
-//   background-size: cover; }
-
+.auth.lock-full-bg {
+  background: url("./assets/images/auth/lockscreen-bg.jpg");
+  background-size: cover; }
+*/
 .auth .lock-profile-img {
   width: 90px;
   height: 90px;
@@ -21932,9 +21939,9 @@ div.tagsinput {
     -webkit-transition: width 0.25s ease;
     -moz-transition: width 0.25s ease;
     -ms-transition: width 0.25s ease;
-    box-shadow: 20px 19px 34px -15px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 20px 19px 34px -15px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 20px 19px 34px -15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
     color: #ffffff;
     padding-left: 15px;
     padding-right: 15px;
@@ -22664,17 +22671,24 @@ div.tagsinput {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
-  flex-direction: column; }
+  flex-direction: column;
+color:#000000; }
   @media (max-width: 991px) {
     .main-panel {
       margin-left: 0;
       width: 100%; } }
 
 .content-wrapper {
-  background: #000000;
+  background: #ffffff;
   padding: 1.875rem 1.75rem;
   width: 100%;
   -webkit-flex-grow: 1;
   flex-grow: 1; }
 
 /*# sourceMappingURL=maps/style.css.map */
+.table td img.thum{
+  height:100px;
+  width:100px;
+  filter: invert(1);
+  border-radius:0;
+}

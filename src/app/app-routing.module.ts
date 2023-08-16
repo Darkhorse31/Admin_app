@@ -5,6 +5,7 @@ import { PhaseComponent } from './phase/phase.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
 const routes: Routes = [
    {
@@ -27,6 +28,10 @@ const routes: Routes = [
        {
          path:"user",
          component:UserComponent
+       },
+       {
+         path:"dashboard",
+         component:DashboardComponent
        },
     ]
    },
