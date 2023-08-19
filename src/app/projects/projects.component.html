@@ -41,18 +41,26 @@
                 <td>Photo 3</td>
                 <td>Photo 4</td>
                 <td>Photo 5</td>
+                <td>Action</td>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let student of studentInfo">
-                <td>{{student?.uid}}</td>
-                <td>{{student?.name | titlecase}}</td>
+              <tr *ngFor="let student of studentInfo; let i=index;">
+                <td>{{i+1}}</td>
+                <td>{{student?.name | titlecase}}
+                  <br>
+                  <br>
+                  {{student?.date | date:'dd/MM/yyyy'}}
+                </td>
                 <td>{{student?.adhaar}}</td>
                 <td><app-imagedisplay [imageData]="parse(student?.photo1)?.photo1"></app-imagedisplay></td>
                 <td><app-imagedisplay [imageData]="parse(student?.photo2)?.photo2"></app-imagedisplay></td>
                 <td><app-imagedisplay [imageData]="parse(student?.photo3)?.photo3"></app-imagedisplay></td>
                 <td><app-imagedisplay [imageData]="parse(student?.photo4)?.photo4"></app-imagedisplay></td>
                 <td><app-imagedisplay [imageData]="parse(student?.photo5)?.photo5"></app-imagedisplay></td>
+                <td >
+                  <span *ngIf="calculateDay(student?.date) <=15">
+                  <i _ngcontent-uab-c26="" class="mdi mdi-delete"></i></span></td>
               </tr>
             </tbody>
           </table>
