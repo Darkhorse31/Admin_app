@@ -28,7 +28,7 @@ export class LoginComponent {
             user:response?.data
           }
           localStorage.setItem('user',JSON.stringify(token))
-          this.router.navigate([''])
+          this.router.navigate(['dashboard'])
          
         }else{
           window.alert(response?.message)

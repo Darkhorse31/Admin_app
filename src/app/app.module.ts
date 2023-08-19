@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     ImagedisplayComponent,
     LoginComponent,
     MainComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
