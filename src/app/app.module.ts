@@ -16,6 +16,7 @@ import { MainComponent } from './main/main.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     MainComponent,
     DashboardComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

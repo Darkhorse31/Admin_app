@@ -27,6 +27,14 @@ export class ProjectsComponent implements OnInit {
   }
 
   }
+  calculateDay(givenDate:any){
+    const startDate = new Date(givenDate);
+    const endDate = new Date();
+    const timeDifference = endDate.getTime() - startDate.getTime();
+    const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
+    return Math.round(daysDifference)
+
+  }
   ngOnInit(){
     this.getBatchList()
     this.getStuInfo()
@@ -37,6 +45,20 @@ export class ProjectsComponent implements OnInit {
         }
       })
     })
+  }
+  deleteStudent(id:any){
+    const confirm=window.confirm('Are you Sure.')
+    if(confirm){
+      const reqObj={
+        id:id
+      }
+      this.api.deleteStudent(reqObj).subscribe((response:any)=>{
+        if(response){
+          this.getStuInfo()
+        }
+      })
+
+    }
   }
   getuserlist(){
     this.api.getuser().subscribe((res:any)=>{

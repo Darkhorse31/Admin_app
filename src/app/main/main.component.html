@@ -3,6 +3,7 @@
       <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo text-success" href="/">Admin Panel</a>
         <a class="sidebar-brand brand-logo-mini text-success" href="/">A P</a>
+      
       </div>
       <ul class="nav">
         <li class="nav-item menu-items">
@@ -29,7 +30,7 @@
             <span class="menu-title">Batch List</span>
           </a>
         </li>
-        <li class="nav-item menu-items">
+        <li class="nav-item menu-items" *ngIf="isSuper">
           <a class="nav-link" routerLink="/user">
             <span class="menu-icon">
               <i class="mdi mdi-chart-bar"></i>
@@ -61,14 +62,15 @@
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                 <h6 class="p-3 mb-0">Profile</h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
+                <a class="dropdown-item preview-item" (click)="click()">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
                       <i class="mdi mdi-settings text-success"></i>
                     </div>
                   </div>
                   <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Settings</p>
+                    <p class="preview-subject mb-1" >Change Password</p>
+                    
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
@@ -90,6 +92,7 @@
           </button>
         </div>
       </nav>
+      
       <div class="main-panel">
         <div class="content-wrapper">
           <router-outlet></router-outlet>
@@ -103,3 +106,16 @@
       </div>
     </div>
   </div>
+ 
+
+  <form [formGroup]="changePass" *ngIf="changepass">
+    <div>
+    <label for="old">Old Password</label>
+    <input id="old" type="text" formControlName="oldpass">
+  </div>
+  <div>
+    <label for="new">New Password</label>
+    <input type="text" name="" id="new" formControlName="newpass">
+  </div>
+  <button type="button" (click)="changePassword()">Change</button>
+  </form>
