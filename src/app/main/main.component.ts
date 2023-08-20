@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../apiservice/auth/auth.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -8,8 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
-  constructor(private auth:AuthService,private router:Router) { }
+  changePass:FormGroup
+  changepass:boolean=false
+  constructor(private auth:AuthService,private router:Router) {
+    this.changePass=new FormGroup({
+     username:new FormControl(''),
+     oldpass:new FormControl(''),
+     newpass:new FormControl('')
+    })
+   }
 
   ngOnInit(): void {
   }
@@ -20,5 +28,19 @@ export class MainComponent implements OnInit {
         localStorage.clear()
       }
     })
+  }
+  click(){
+    this.changepass=!this.changepass
+  }
+  changePassword(){
+    const user=localStorage.getItem("user")
+    if(user?.length && user?.length>5){
+      this.changePass.value.username=JSON.parse(user)?.user?.email
+    }
+    this.auth.changepass(this.changePass.value).subscribe((response:any)=>{
+      alert(response?.message)
+    })
+    
+  
   }
 }

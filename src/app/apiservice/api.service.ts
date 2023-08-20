@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private url="https://extension-api.onrender.com"
-  // private url="http://localhost:3000"
+  // private url="https://extension-api.onrender.com"
+  private url="http://localhost:3000"
   constructor(private http:HttpClient) { }
   getBatches(){
     return this.http.get(`${this.url}/getbatches`)
@@ -29,5 +29,15 @@ export class ApiService {
   }
   getImagePathFromDatabase(): Observable<string> {
     return this.http.get<string>(this.url);
+  }
+  getuserDashboard(){
+    return this.http.get(`${this.url}/users/dashboard`)
+  }
+  deleteStudent(obj:any){
+    return this.http.post(`${this.url}/student/delete`,obj)
+  }
+  edituser(obj:any){
+    return this.http.post(`${this.url}/users/edituser`,obj)
+
   }
 }

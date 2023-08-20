@@ -23,6 +23,7 @@
                 type="text"
                 id="batch"
                 formControlName="username"
+                placeholder="Enter the Name"
                 required
                 class="form-control"
               />
@@ -45,7 +46,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let student of studentInfo; let i=index;">
+              <tr *ngFor="let student of studentInfo | filter:batchform.value.username; let i=index;">
                 <td>{{i+1}}</td>
                 <td>{{student?.name | titlecase}}
                   <br>
@@ -59,7 +60,7 @@
                 <td><app-imagedisplay [imageData]="parse(student?.photo4)?.photo4"></app-imagedisplay></td>
                 <td><app-imagedisplay [imageData]="parse(student?.photo5)?.photo5"></app-imagedisplay></td>
                 <td >
-                  <span *ngIf="calculateDay(student?.date) <=15">
+                  <span style="cursor:pointer" *ngIf="calculateDay(student?.date) <=15" (click)="deleteStudent(student?.uid)">
                   <i _ngcontent-uab-c26="" class="mdi mdi-delete"></i></span></td>
               </tr>
             </tbody>

@@ -3,7 +3,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <button class="btn btn-outline-success mr-3" type="button" (click)="showForm = true">Add User</button>
+        <button class="btn btn-outline-success mr-3" type="button" (click)="showForm = true; isEdit=false; userForm.reset()">Add User</button>
         <button class="btn btn-outline-success" type="button" (click)="showForm = false">User List</button>
       </li>
     </ol>
@@ -14,7 +14,7 @@
     <div class="card">
       <div class="card-body">
         <form [formGroup]="userForm" *ngIf="showForm" (ngSubmit)="onSubmit()">
-          <div class="form-group row">
+          <div class="form-group row" hidden>
             <label class="col-sm-3 col-form-label">First Name</label>
             <div class="col-sm-9">
               <input
@@ -26,7 +26,7 @@
               />
             </div>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" hidden>
             <label class="col-sm-3 col-form-label">Last Name</label>
             <div class="col-sm-9">
               <input
@@ -39,15 +39,15 @@
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Email</label>
+            <label class="col-sm-3 col-form-label">User ID</label>
             <div class="col-sm-9">
-              <input type="email" id="email" formControlName="email" class="form-control" required />
+              <input type="text" [readOnly]="isEdit" id="email" formControlName="email" class="form-control"  />
             </div>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" hidden>
             <label class="col-sm-3 col-form-label">Mobile</label>
             <div class="col-sm-9">
-              <input type="tel" id="mobile" formControlName="mobile" class="form-control" required />
+              <input type="tel" id="mobile" formControlName="mobile" class="form-control"  />
             </div>
           </div>
           <div class="form-group row">
@@ -66,7 +66,7 @@
             <label class="col-sm-3 col-form-label">Password</label>
             <div class="col-sm-9">
               <input
-                type="password"
+                [type]="isEdit?'text':'password'"
                 id="password"
                 formControlName="password"
                 required
@@ -78,13 +78,13 @@
             <div class="col-sm-3">
             </div>
             <div class="col-sm-9">
-              <div class="form-check form-check-success">
+              <div class="form-check form-check-success" hidden>
                 <label class="form-check-label">
                   <input type="checkbox" id="edit_option" formControlName="edit_option" class="form-check-input" />
                   Edit Option<i class="input-helper"></i>
                 </label>
               </div>
-              <div class="form-check form-check-success">
+              <div class="form-check form-check-success" hidden>
                 <label class="form-check-label">
                   <input type="checkbox" id="delete_option" formControlName="delete_option" class="form-check-input" />
                   Delete Option<i class="input-helper"></i>
@@ -110,27 +110,24 @@
             <thead>
               <tr>
                 <td>ID</td>
-                <td>Name</td>
-                <td>User Name</td>
+                <td>User ID</td>
                 <td>Admin Name</td>
-                <td>Email</td>
-                <td>Mobile</td>
-                <td>Status</td>
                 <td>Batch No</td>
                 <td>Used batch</td>
                 <td>Action</td>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of listuser"><td>{{user?.id}}</td>
-                <td>{{user?.first_name+user?.last_name | titlecase}}</td>
+              <tr *ngFor="let user of listuser; let index=index;"><td>{{index+1}}</td>
                 <td>{{user?.email |titlecase}}</td>
-                <td>{{user?.adminName}}</td>
-                <td>{{user?.email |titlecase}}</td>
-                <td>{{user?.mobile}}</td>
-                <td>{{user?.status?user?.status:'Activate'}}</td>
+                <td>{{user?.admin_name}}</td>
                 <td>{{user?.number_of_batches}}</td>
                 <td>{{user?.usedBatch}}</td>
+                <td>
+                  <i (click)="edituserlist(user)" style="cursor: pointer;" class="mdi mdi-pencil">
+                    
+                  </i>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -139,3 +136,4 @@
     </div>
   </div>
 </div>
+
