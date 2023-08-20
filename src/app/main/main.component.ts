@@ -18,8 +18,13 @@ export class MainComponent implements OnInit {
      newpass:new FormControl('')
     })
    }
+   isSuper:any
 
   ngOnInit(): void {
+    const user=localStorage.getItem('user')
+    if(user){
+    this.isSuper=JSON.parse(user)?.user?.super_admin
+  }
   }
   logout(){
     this.auth.logout().subscribe((response:any)=>{
