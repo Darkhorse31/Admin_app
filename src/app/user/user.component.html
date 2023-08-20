@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3 class="page-title">User List</h3>
+  <h3 class="page-title">User List <span class="text-dark" *ngIf="showForm">/ <span class="text-success">Add User</span></span></h3>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
@@ -109,24 +109,23 @@
           <table class="table">
             <thead>
               <tr>
-                <td>ID</td>
+                <td width="70">S.No</td>
                 <td>User ID</td>
                 <td>Admin Name</td>
-                <td>Batch No</td>
+                <td>Max Batch</td>
                 <td>Used batch</td>
-                <td>Action</td>
+                <td width="80">Action</td>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of listuser; let index=index;"><td>{{index+1}}</td>
+              <tr *ngFor="let user of listuser; let index=index;">
+                <td align="center">{{index+1}}</td>
                 <td>{{user?.email |titlecase}}</td>
                 <td>{{user?.admin_name}}</td>
                 <td>{{user?.number_of_batches}}</td>
                 <td>{{user?.usedBatch}}</td>
-                <td>
-                  <i (click)="edituserlist(user)" style="cursor: pointer;" class="mdi mdi-pencil">
-                    
-                  </i>
+                <td align="center">
+                  <span style="cursor: pointer; font-size: 30px;" (click)="edituserlist(user)"><i class="mdi mdi-pencil"></i></span>
                 </td>
               </tr>
             </tbody>

@@ -1,5 +1,5 @@
   <div class="page-header">
-    <h3 class="page-title">Batch List</h3>
+    <h3 class="page-title">Batch List <span class="text-dark" *ngIf="showForm">/ <span class="text-success">Add Batch</span></span></h3>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -50,21 +50,22 @@
             <table class="table">
               <thead>
                 <tr>
-                  <td>ID</td>
+                  <td width="70">ID</td>
                   <td>Batch Name</td>
                   <td>Admin Name</td>
                   <td>User Name</td>
-                  <td>Student</td>
-                  <td>Status</td>
+                  <td align="center">Total Students</td>
+                  <!-- <td width="80">Status</td> -->
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let batch of batchlist"><td>{{batch?.id}}</td>
+                <tr *ngFor="let batch of batchlist; let index=index;">
+                  <td align="center">{{index+1}}</td>
                   <td>{{batch?.batch_type | titlecase}}</td>
                   <td>{{batch?.adminName?batch?.adminName:'Naveen'}}</td>
-                  <td>{{batch?.batchname }}</td>
-                  <td>{{batch?.student}}</td>
-                  <td>{{batch?.status?batch?.status:'Active'}}</td>
+                  <td>{{batch?.username }}</td>
+                  <td align="center">{{batch?.student}}{{batch?.student?.name | titlecase}}</td>
+                  <!-- <td align="center">{{batch?.status?batch?.status:'Active'}}</td> -->
                 </tr>
               </tbody>
             </table>

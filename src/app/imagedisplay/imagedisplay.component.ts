@@ -14,6 +14,8 @@ export class ImagedisplayComponent {
     if(change?.imageData?.currentValue){
       this.imageDataUrl=change?.imageData?.currentValue
   }
-
+else{
+  this.imageDataUrl='assets/img/thum.png'
+}
   }
 }
