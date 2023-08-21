@@ -4,11 +4,11 @@ import { ApiService } from '../apiservice/api.service';
 import { AuthService } from '../apiservice/auth/auth.service';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class UserComponent  {
+export class AdminComponent implements OnInit {
   showForm:boolean=false
   userForm: FormGroup;
   listuser:any[]=[]
@@ -23,14 +23,13 @@ export class UserComponent  {
       password: ['', Validators.required],
       edit_option: [false],
       delete_option: [false],
-      user:[true]
     });
   }
   ngOnInit(){
     this.getuserlist()
   }
   getuserlist(){
-    this.api.getuser().subscribe((res:any)=>{
+    this.api.getadmin().subscribe((res:any)=>{
       if(res){
         this.listuser=res.data
       }
@@ -38,7 +37,7 @@ export class UserComponent  {
   }
   onSubmit() {
     if(!this.isEdit){
-      this.userForm.value.user=true
+      this.userForm.value.admin=true
      this.api.insertuser(this.userForm.value).subscribe((response:any)=>{
       if(response){
         this.getuserlist()
@@ -55,6 +54,6 @@ edituserlist(userInfo:any){
   this.showForm=true
   this.isEdit=true
   this.userForm.patchValue(userInfo)
-}
+}}
 
-}
+
