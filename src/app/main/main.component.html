@@ -62,14 +62,14 @@
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                 <h6 class="p-3 mb-0">Profile</h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item" (click)="click()">
+                <a class="dropdown-item preview-item" (click)="click()" data-toggle="modal" data-target="#chanPass">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
                       <i class="mdi mdi-settings text-success"></i>
                     </div>
                   </div>
                   <div class="preview-item-content">
-                    <p class="preview-subject mb-1" >Change Password</p>
+                    <p class="preview-subject mb-1">Change Password</p>
                     
                   </div>
                 </a>
@@ -106,16 +106,29 @@
       </div>
     </div>
   </div>
- 
-
-  <form [formGroup]="changePass" *ngIf="changepass">
-    <div>
-    <label for="old">Old Password</label>
-    <input id="old" type="text" formControlName="oldpass">
+  <div class="modal" tabindex="-1" id="chanPass" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+      <form [formGroup]="changePass" *ngIf="changepass" class="modal-content bg-white">
+        <div class="modal-header">
+          <h5 class="modal-title">Change Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group mb-4" class="form-group mb-4">
+            <label for="old">Old Password</label>
+            <input id="old" type="text" formControlName="oldpass" class="form-control p_input" />
+          </div>
+          <div class="form-group mb-4">
+            <label for="new">New Password</label>
+            <input type="text" name="" id="new" formControlName="newpass" class="form-control p_input" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" (click)="changePassword()" class="btn btn-outline-success btn-block- enter-btn">Change</button>
+        </div>
+      </form>
+    </div>
   </div>
-  <div>
-    <label for="new">New Password</label>
-    <input type="text" name="" id="new" formControlName="newpass">
-  </div>
-  <button type="button" (click)="changePassword()">Change</button>
-  </form>

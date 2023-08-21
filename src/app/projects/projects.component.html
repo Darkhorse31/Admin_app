@@ -8,6 +8,7 @@
 </div>
 <div class="row">
   <div class="col-12">
+    <h6 class="text-warning">( The maximum limit of students is 35 in a Batch )</h6>
     <div class="card">
       <div class="card-body">
         <form [formGroup]="batchform" (ngSubmit)="onSubmit()" class="mb-4">
@@ -34,7 +35,7 @@
           <table class="table">
             <thead>
               <tr>
-                <td>S.No</td>
+                <td width="70">S.No</td>
                 <td>Name</td>
                 <td>Batch Name</td>
                 <td>Photo 1</td>
@@ -42,26 +43,27 @@
                 <td>Photo 3</td>
                 <td>Photo 4</td>
                 <td>Photo 5</td>
-                <td>Action</td>
+                <td width="80">Action</td>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let student of studentInfo | filter:batchform.value.username; let i=index;">
-                <td>{{i+1}}</td>
-                <td>{{student?.name | titlecase}}
-                  <br>
-                  <br>
-                  {{student?.date | date:'dd/MM/yyyy'}}
+                <td align="center">{{i+1}}</td>
+                <td>
+                  <div class="mb-1">{{student?.name | titlecase}}</div>
+                  <small>{{student?.date | date:'dd/MM/yyyy'}}</small>
                 </td>
                 <td>{{student?.adhaar}}</td>
-                <td><app-imagedisplay [imageData]="parse(student?.photo1)?.photo1"></app-imagedisplay></td>
-                <td><app-imagedisplay [imageData]="parse(student?.photo2)?.photo2"></app-imagedisplay></td>
-                <td><app-imagedisplay [imageData]="parse(student?.photo3)?.photo3"></app-imagedisplay></td>
-                <td><app-imagedisplay [imageData]="parse(student?.photo4)?.photo4"></app-imagedisplay></td>
-                <td><app-imagedisplay [imageData]="parse(student?.photo5)?.photo5"></app-imagedisplay></td>
-                <td >
-                  <span style="cursor:pointer" *ngIf="calculateDay(student?.date) <=15" (click)="deleteStudent(student?.uid)">
-                  <i _ngcontent-uab-c26="" class="mdi mdi-delete"></i></span></td>
+                <td class="p-1"><app-imagedisplay [imageData]="parse(student?.photo1)?.photo1"></app-imagedisplay></td>
+                <td class="p-1"><app-imagedisplay [imageData]="parse(student?.photo2)?.photo2"></app-imagedisplay></td>
+                <td class="p-1"><app-imagedisplay [imageData]="parse(student?.photo3)?.photo3"></app-imagedisplay></td>
+                <td class="p-1"><app-imagedisplay [imageData]="parse(student?.photo4)?.photo4"></app-imagedisplay></td>
+                <td class="p-1"><app-imagedisplay [imageData]="parse(student?.photo5)?.photo5"></app-imagedisplay></td>
+                <td align="center">
+                  <span style="cursor:pointer;font-size: 30px;" *ngIf="calculateDay(student?.date) <=15" (click)="deleteStudent(student?.uid)">
+                  <i class="mdi mdi-delete"></i></span>
+                  <span style="cursor:pointer;font-size: 30px;" *ngIf="calculateDay(student?.date) >15">--</span>
+                  </td>
               </tr>
             </tbody>
           </table>
