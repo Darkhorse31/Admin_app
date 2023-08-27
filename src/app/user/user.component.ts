@@ -42,12 +42,17 @@ export class UserComponent  {
      this.api.insertuser(this.userForm.value).subscribe((response:any)=>{
       if(response){
         this.getuserlist()
+        this.userForm.reset()
+        alert("User Inserted Successfully.")
+
       }
      })
     }else{
       this.api.edituser(this.userForm.value).subscribe((response:any)=>{
         this.getuserlist()
         alert(response?.message)
+        this.userForm.reset()
+
       })
     }
   }

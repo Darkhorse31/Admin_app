@@ -41,11 +41,13 @@ export class AdminComponent implements OnInit {
      this.api.insertuser(this.userForm.value).subscribe((response:any)=>{
       if(response){
         this.getuserlist()
+        this.userForm.reset()
       }
      })
     }else{
       this.api.edituser(this.userForm.value).subscribe((response:any)=>{
         this.getuserlist()
+        this.userForm.reset()
         alert(response?.message)
       })
     }
