@@ -125,6 +125,8 @@
                 <td>{{user?.number_of_batches}}</td>
                 <td>{{user?.usedBatch}}</td>
                 <td align="center">
+                  <span style="cursor:pointer;font-size: 30px;" *ngIf="isSuper" (click)="deleteuser(user?.id)">
+                    <i class="mdi mdi-delete"></i></span>
                   <span style="cursor: pointer; font-size: 30px;" (click)="edituserlist(user)"><i class="mdi mdi-pencil"></i></span>
                 </td>
               </tr>

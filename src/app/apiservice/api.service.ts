@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private url="https://extension-api.onrender.com"
-  // private url="http://localhost:3000"
+  // private url="https://extension-api.onrender.com"
+  private url="http://localhost:3000"
   constructor(private http:HttpClient) { }
   getBatches(){
     return this.http.get(`${this.url}/getbatches`)
@@ -42,5 +42,8 @@ export class ApiService {
   edituser(obj:any){
     return this.http.post(`${this.url}/users/edituser`,obj)
 
+  }
+  deleteUser(obj:any){
+    return this.http.post(`${this.url}/users/deleteuser`,obj)
   }
 }

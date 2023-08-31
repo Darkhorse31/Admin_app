@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private url="https://extension-api.onrender.com"
-  // private url="http://localhost:3000"
+  // private url="https://extension-api.onrender.com"
+  private url="http://localhost:3000"
   constructor(private http:HttpClient) { }
   login(req:any){
     return this.http.post(`${this.url}/users/login`,req)

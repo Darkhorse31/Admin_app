@@ -12,6 +12,7 @@ export class UserComponent  {
   showForm:boolean=false
   userForm: FormGroup;
   listuser:any[]=[]
+  isSuper:any
   isEdit:boolean=false
   constructor(private formBuilder: FormBuilder,private api:ApiService) {
     this.userForm = this.formBuilder.group({
@@ -27,6 +28,9 @@ export class UserComponent  {
     });
   }
   ngOnInit(){
+    const user=localStorage.getItem('user')
+    if(user){
+    this.isSuper=JSON.parse(user)?.user?.super_admin}
     this.getuserlist()
   }
   getuserlist(){
@@ -55,6 +59,21 @@ export class UserComponent  {
 
       })
     }
+  }
+  deleteuser(id:any){
+    let obj={
+      id:id
+    }
+    this.api.deleteUser(obj).subscribe((response:any)=>{
+      if(response?.success){
+        alert(response?.message)
+        this.listuser.find((user:any,index:number)=>{
+          if(user?.id===id){
+            this.listuser.splice(index,1)
+          }
+        })
+      }
+    })
   }
 edituserlist(userInfo:any){
   this.showForm=true
