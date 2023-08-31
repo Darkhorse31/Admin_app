@@ -24,6 +24,9 @@ export class ApiService {
     getuser(){
     return this.http.post(`${this.url}/getuser`,{})
   }
+  getadmin(){
+    return this.http.post(`${this.url}/getadmin`,{})
+  }
   insertuser(req:any){
     return this.http.post(`${this.url}/insertuser`,req)
   }
@@ -39,5 +42,8 @@ export class ApiService {
   edituser(obj:any){
     return this.http.post(`${this.url}/users/edituser`,obj)
 
+  }
+  deleteUser(obj:any){
+    return this.http.post(`${this.url}/users/deleteuser`,obj)
   }
 }

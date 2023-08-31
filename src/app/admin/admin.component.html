@@ -1,0 +1,137 @@
+<div class="page-header">
+    <h3 class="page-title">User List <span class="text-dark" *ngIf="showForm">/ <span class="text-success">Add Admin</span></span></h3>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <button class="btn btn-outline-success mr-3" type="button" (click)="showForm = true; isEdit=false; userForm.reset()">Add Admin</button>
+          <button class="btn btn-outline-success" type="button" (click)="showForm = false">Admin List</button>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-12" *ngIf="showForm">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="userForm" *ngIf="showForm" (ngSubmit)="onSubmit()">
+            <div class="form-group row" hidden>
+              <label class="col-sm-3 col-form-label">First Name</label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  id="first_name"
+                  formControlName="first_name"
+                  required
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="form-group row" hidden>
+              <label class="col-sm-3 col-form-label">Last Name</label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  id="last_name"
+                  formControlName="last_name"
+                  required
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Admin ID</label>
+              <div class="col-sm-9">
+                <input type="text" [readOnly]="isEdit" id="email" formControlName="email" class="form-control"  />
+              </div>
+            </div>
+            <div class="form-group row" hidden>
+              <label class="col-sm-3 col-form-label">Mobile</label>
+              <div class="col-sm-9">
+                <input type="tel" id="mobile" formControlName="mobile" class="form-control"  />
+              </div>
+            </div>
+            <div class="form-group row" hidden>
+              <label class="col-sm-3 col-form-label">Max Number of Batches</label>
+              <div class="col-sm-9">
+                <input
+                  type="number"
+                  id="number_of_batches"
+                  formControlName="number_of_batches"
+                  required
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Password</label>
+              <div class="col-sm-9">
+                <input
+                  [type]="isEdit?'text':'password'"
+                  id="password"
+                  formControlName="password"
+                  required
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+              </div>
+              <div class="col-sm-9">
+                <div class="form-check form-check-success" hidden>
+                  <label class="form-check-label">
+                    <input type="checkbox" id="edit_option" formControlName="edit_option" class="form-check-input" />
+                    Edit Option<i class="input-helper"></i>
+                  </label>
+                </div>
+                <div class="form-check form-check-success" hidden>
+                  <label class="form-check-label">
+                    <input type="checkbox" id="delete_option" formControlName="delete_option" class="form-check-input" />
+                    Delete Option<i class="input-helper"></i>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-right">
+                <button type="submit" class="btn btn-success btn-fw mr-3">Submit</button>
+                <button (click)="showForm=false" type="cancel" class="btn btn-dark btn-fw">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="!showForm">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <td width="70">S.No</td>
+                  <td>User ID</td>
+                  <td>Admin Name</td>
+                  <td width="80">Action</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of listuser; let index=index;">
+                  <td align="center">{{index+1}}</td>
+                  <td>{{user?.email |titlecase}}</td>
+                  <td>{{user?.admin_name}}</td>
+                  <td align="center">
+                    <span style="cursor:pointer;font-size: 30px;" *ngIf="isSuper" (click)="deleteuser(user?.id)">
+                      <i class="mdi mdi-delete"></i></span>
+                    <span style="cursor: pointer; font-size: 30px;" (click)="edituserlist(user)"><i class="mdi mdi-pencil"></i></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

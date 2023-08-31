@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
+import { AdminComponent } from './admin/admin.component';
 const routes: Routes = [
    {
     path:'login',
@@ -28,6 +29,10 @@ const routes: Routes = [
        {
          path:"user",
          component:UserComponent
+       },
+       {
+        path:'admin',
+        component:AdminComponent
        },
        {
          path:"dashboard",

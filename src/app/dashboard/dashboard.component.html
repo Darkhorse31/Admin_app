@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-sm-6 grid-margin">
       <div class="card">
-        <div class="card-body">
-          <h5 class="text-success h3">Total Users</h5>
+        <div class="card-body" *ngIf="isSuper || admin">
+          <h5 class="text-success h3" >Total Users</h5>
           <div class="row">
             <div class="col-8 col-sm-12 col-xl-8 my-auto">
               <div class="d-flex d-sm-block d-md-flex align-items-center">
-                <h2 class="mb-0 text-warning">{{jsonparseData(dashborddata?.batch_types)}}</h2>
+                <h2 class="mb-0 text-warning">{{this.dashboardObject.user?this.dashboardObject.user:0}}</h2>
               </div>
             </div>
             <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
@@ -23,7 +23,7 @@
           <div class="row">
             <div class="col-8 col-sm-12 col-xl-8 my-auto">
               <div class="d-flex d-sm-block d-md-flex align-items-center">
-                <h2 class="mb-0 text-warning">{{dashborddata?.total_image?dashborddata?.total_image:'0'}}</h2>
+                <h2 class="mb-0 text-warning">{{this.dashboardObject.images?this.dashboardObject.images:0}}</h2>
               </div>
             </div>
             <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
@@ -40,7 +40,26 @@
           <div class="row">
             <div class="col-8 col-sm-12 col-xl-8 my-auto">
               <div class="d-flex d-sm-block d-md-flex align-items-center">
-                <h2 class="mb-0 text-warning">{{dashborddata?.number_of_batches?dashborddata?.number_of_batches:'0'}}</h2>
+                <h2 class="mb-0 text-warning" *ngIf="!isSuper && !admin">{{this.dashboardObject.batches?this.dashboardObject.batches:0}}</h2>
+                <h2 class="mb-0 text-warning" *ngIf="admin">{{this.dashboardObject.batchassignBuyadmin?this.dashboardObject.batchassignBuyadmin:0}}</h2>
+                <h2 class="mb-0 text-warning" *ngIf="isSuper">{{this.dashboardObject.batchassignBuyadmin?this.dashboardObject.batchassignBuyadmin:0}}</h2>
+              </div>
+            </div>
+            <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+              <i class="icon-lg mdi mdi-account-switch text-info ml-auto"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 grid-margin" *ngIf="isSuper">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="text-success h3">Total Admin</h5>
+          <div class="row">
+            <div class="col-8 col-sm-12 col-xl-8 my-auto">
+              <div class="d-flex d-sm-block d-md-flex align-items-center">
+                <h2 class="mb-0 text-warning">{{this.dashboardObject.admin?this.dashboardObject.admin:0}}</h2>
               </div>
             </div>
             <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
@@ -52,12 +71,12 @@
     </div>
     <div class="col-sm-6 grid-margin">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body" *ngIf="!isSuper && !admin">
             <h5 class="text-success h3">Total Used Batches</h5>
             <div class="row">
               <div class="col-8 col-sm-12 col-xl-8 my-auto">
                 <div class="d-flex d-sm-block d-md-flex align-items-center">
-                  <h2 class="mb-0 text-warning">{{dashborddata?.total_batch?dashborddata?.total_batch:'0'}}</h2>
+                  <h2 class="mb-0 text-warning">{{this.dashboardObject.usedbaches?this.dashboardObject.usedbaches:0}}</h2>
                 </div>
               </div>
               <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">

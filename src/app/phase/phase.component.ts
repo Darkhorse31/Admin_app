@@ -44,6 +44,8 @@ export class PhaseComponent implements OnInit {
      this.api.insertBatches(this.batchform.value).subscribe((response:any)=>{
       if(response){
         this.getBatchList()
+        this.batchform.reset()
+        alert(response?.message)
             }
      })
     }

@@ -19,11 +19,13 @@ export class MainComponent implements OnInit {
     })
    }
    isSuper:any
+   admin:any
 
   ngOnInit(): void {
     const user=localStorage.getItem('user')
     if(user){
     this.isSuper=JSON.parse(user)?.user?.super_admin
+    this.admin=JSON.parse(user)?.user?.admin
   }
   }
   logout(){

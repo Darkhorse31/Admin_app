@@ -17,6 +17,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FilterPipe } from './filter.pipe';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FilterPipe } from './filter.pipe';
     MainComponent,
     DashboardComponent,
     FilterPipe,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
