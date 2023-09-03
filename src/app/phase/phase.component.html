@@ -65,6 +65,8 @@
                   <td>{{batch?.adminName?batch?.adminName:'Naveen'}}</td>
                   <td>{{batch?.username }}</td>
                   <td align="center">{{batch?.student}}{{batch?.student?.name | titlecase}}</td>
+                  <td align="center"> <span style="cursor:pointer;font-size: 30px;" *ngIf="isSuper" (click)="deletebatch(batch?.id)">
+                    <i class="mdi mdi-delete"></i></span></td>
                   <!-- <td align="center">{{batch?.status?batch?.status:'Active'}}</td> -->
                 </tr>
               </tbody>
