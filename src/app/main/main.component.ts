@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     const user=localStorage.getItem('user')
     if(user){
-    this.username=JSON.parse(user)?.user?.first_name +JSON.parse(user)?.user?.last_name 
+    this.username=JSON.parse(user)?.user?.email 
     this.isSuper=JSON.parse(user)?.user?.super_admin
     this.admin=JSON.parse(user)?.user?.admin
   }
