@@ -13,6 +13,8 @@ export class PhaseComponent implements OnInit {
   showForm:boolean=false
   batchform: FormGroup;
   listuser:any[]=[]
+  admin:any;
+  userEmail:any;
   batchlist:any=[]
   constructor(private formBuilder: FormBuilder,private api:ApiService) {
     this.batchform = this.formBuilder.group({
@@ -24,7 +26,10 @@ export class PhaseComponent implements OnInit {
   ngOnInit(){
     const user=localStorage.getItem('user')
     if(user){
-    this.isSuper=JSON.parse(user)?.user?.super_admin}
+    this.isSuper=JSON.parse(user)?.user?.super_admin;
+    this.admin=JSON.parse(user)?.user?.admin;
+  
+  }
     this.getuserlist()
     this.getBatchList()
   }

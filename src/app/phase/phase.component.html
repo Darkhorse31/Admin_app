@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <button class="btn btn-outline-success mr-3" type="button" (click)="showForm = true">Add Batch</button>
+          <button *ngIf="isSuper || admin" class="btn btn-outline-success mr-3" type="button" (click)="showForm = true">Add Batch</button>
           <button class="btn btn-outline-success" type="button" (click)="showForm = false">Batch List</button>
         </li>
       </ol>
