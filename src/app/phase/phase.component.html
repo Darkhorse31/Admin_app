@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <button class="btn btn-outline-success mr-3" type="button" (click)="showForm = true">Add Batch</button>
+          <button *ngIf="isSuper || admin" class="btn btn-outline-success mr-3" type="button" (click)="showForm = true">Add Batch</button>
           <button class="btn btn-outline-success" type="button" (click)="showForm = false">Batch List</button>
         </li>
       </ol>
@@ -65,6 +65,8 @@
                   <td>{{batch?.adminName?batch?.adminName:'Naveen'}}</td>
                   <td>{{batch?.username }}</td>
                   <td align="center">{{batch?.student}}{{batch?.student?.name | titlecase}}</td>
+                  <td align="center"> <span style="cursor:pointer;font-size: 30px;" *ngIf="isSuper" (click)="deletebatch(batch?.id)">
+                    <i class="mdi mdi-delete"></i></span></td>
                   <!-- <td align="center">{{batch?.status?batch?.status:'Active'}}</td> -->
                 </tr>
               </tbody>

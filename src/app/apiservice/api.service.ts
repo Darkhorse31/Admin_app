@@ -46,4 +46,7 @@ export class ApiService {
   deleteUser(obj:any){
     return this.http.post(`${this.url}/users/deleteuser`,obj)
   }
+  deletebatch(obj:any){
+    return this.http.post(`${this.url}/users/deletebatch`,obj)
+  }
 }

@@ -11,6 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class MainComponent implements OnInit {
   changePass:FormGroup
   changepass:boolean=false
+  username:string=''
   constructor(private auth:AuthService,private router:Router) {
     this.changePass=new FormGroup({
      username:new FormControl(''),
@@ -20,10 +21,11 @@ export class MainComponent implements OnInit {
    }
    isSuper:any
    admin:any
-
+  
   ngOnInit(): void {
     const user=localStorage.getItem('user')
     if(user){
+    this.username=JSON.parse(user)?.user?.email 
     this.isSuper=JSON.parse(user)?.user?.super_admin
     this.admin=JSON.parse(user)?.user?.admin
   }

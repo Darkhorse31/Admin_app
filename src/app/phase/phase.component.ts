@@ -13,6 +13,8 @@ export class PhaseComponent implements OnInit {
   showForm:boolean=false
   batchform: FormGroup;
   listuser:any[]=[]
+  admin:any;
+  userEmail:any;
   batchlist:any=[]
   constructor(private formBuilder: FormBuilder,private api:ApiService) {
     this.batchform = this.formBuilder.group({
@@ -20,7 +22,14 @@ export class PhaseComponent implements OnInit {
       batch_type: ['', Validators.required],
     });
   }
+  isSuper:any
   ngOnInit(){
+    const user=localStorage.getItem('user')
+    if(user){
+    this.isSuper=JSON.parse(user)?.user?.super_admin;
+    this.admin=JSON.parse(user)?.user?.admin;
+  
+  }
     this.getuserlist()
     this.getBatchList()
   }
@@ -38,8 +47,19 @@ export class PhaseComponent implements OnInit {
       }
     })
   }
+  deletebatch(id:any){
+    this.api.deletebatch({id:id}).subscribe((response:any)=>{
+      if(response?.success){
+        alert(response?.message)
+        this.batchlist.find((batch:any,index:number)=>{
+          if(batch?.id===id){
+            this.batchlist.splice(index,1)
+          }
+        })
+      }
+    })
+  }
   onSubmit() {
-    console.log(this.batchform.value)
     if (this.batchform.valid) {
      this.api.insertBatches(this.batchform.value).subscribe((response:any)=>{
       if(response){
