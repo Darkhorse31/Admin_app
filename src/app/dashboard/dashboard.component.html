@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col-sm-6 grid-margin">
+    <div class="col-sm-6 grid-margin" *ngIf="isSuper || admin">
       <div class="card">
-        <div class="card-body" *ngIf="isSuper || admin">
+        <div class="card-body">
           <h5 class="text-success h3" >Total Users</h5>
           <div class="row">
             <div class="col-8 col-sm-12 col-xl-8 my-auto">
@@ -69,9 +69,9 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6 grid-margin">
+    <div class="col-sm-6 grid-margin" *ngIf="!isSuper && !admin">
         <div class="card">
-          <div class="card-body" *ngIf="!isSuper && !admin">
+          <div class="card-body">
             <h5 class="text-success h3">Total Used Batches</h5>
             <div class="row">
               <div class="col-8 col-sm-12 col-xl-8 my-auto">
@@ -81,7 +81,7 @@
               </div>
               <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                 <i class="icon-lg mdi mdi-account-network text-warning ml-auto"></i>
-              </div>
+              </div>  
             </div>
           </div>
         </div>
